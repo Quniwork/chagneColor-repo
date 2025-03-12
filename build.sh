@@ -21,7 +21,7 @@ git add -A
 # 進行 commit
 git commit -m 'deploy'
 # 加 GitHub 遠端的 repo
-git remote add origin git@github-quniwork:quniwork/github.com/Quniwork/chagneColor.git
+git remote add origin git@github-quniwork:quniwork/chagneColor.git
 # 進行強制 push
 git push -f origin master
 
