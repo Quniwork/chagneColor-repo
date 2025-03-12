@@ -9,7 +9,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "clean": "rm -rf .nuxt node_modules/.cache node_modules/.vite",
-    "build": "npm run clean && nuxt build"
+    "build": "npm run clean && nuxt build",
+    "deploy": "gh-pages --dotfiles -d .output/public"
   },
   "dependencies": {
     "@cyhnkckali/vue3-color-picker": "^2.0.2",
@@ -27,6 +28,7 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "sass": "^1.80.4"
   },
   "engines": {

@@ -14,7 +14,8 @@ export default defineNuxtConfig({
   components: true,
 
   app: {
-    baseURL: '/changeColor/'
+    baseURL: process.env.NODE_ENV === 'production' ? '/changeColor/' : '/',
+    buildAssetsDir: '/static/',
     head: {
       title: `${process.env.NUXT_APP_TITLE || 'BBIN Template'}｜BBIN Template`,
       meta: [
