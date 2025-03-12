@@ -1,0 +1,841 @@
+@use 'sass:list'
+@use 'variables'
+
+// transform
+.fade-enter-active,
+.fade-leave-active
+  transition: opacity .3s ease
+
+.fade-enter-from,
+.fade-leave-to
+  opacity: 0.1
+
+
+.slide-left-enter-active, .slide-left-leave-active,
+.slide-right-enter-active, .slide-right-leave-active
+  transition: transform 0.5s ease
+
+.slide-left-enter, .slide-right-leave-to
+  transform: translateX(100%)
+
+.slide-left-leave-to, .slide-right-enter
+  transform: translateX(-100%)
+
+
+@mixin btn-hover
+  overflow: hidden
+  position: relative
+  > span
+    position: relative
+    z-index: 2
+  &:hover::after
+    content: ''
+    display: block
+    width: 100%
+    height: 100%
+    background-color: rgb(var(--color-primary-bg) / 20%)
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 1
+
+
+.text-primary
+  color: rgb(var(--color-primary))
+
+*
+  box-sizing: border-box
+
+body
+  color: rgb(var(--color-primary-text))
+  background-color: rgb(var(--color-primary-bg))
+
+.is-static
+  width: 100%
+  min-width: var(--min-width)
+  background: rgb(var(--color-primary-bg))
+.page-layout
+  width: 100%
+  min-width: var(--min-width)
+  min-height: 100vh
+  font-size: .9375rem
+  margin: 0 auto
+  .page-wrap
+    background-color: rgb(var(--color-primary-bg))
+    position: relative
+    &::before
+      content: ''
+      width: 100%
+      height: 100%
+      background: var(--page-bg)
+      position: absolute
+      top: 0
+      left: 0
+      pointer-events: none
+
+.page-header,
+.page-container-wrap,
+.page-footer
+  --opacity: 1
+  width: 100%
+  min-width: var(--min-width)
+  margin: 0 auto
+  position: relative
+
+// header
+.header-fixed-wrap
+  background-color: rgb(var(--color-secondary-bg) / 20%)
+  .ele-fixed-inner
+    width: var(--min-width)
+    margin: 0 auto
+
+.header-wrap
+  display: grid
+  grid-template-columns: 200px 1fr
+  justify-content: flex-start
+  gap: 20px
+  width: 100%
+  margin: 0 auto
+  .header-logo
+    display: flex
+    justify-content: center
+    align-items: center
+    .ele-logo-wrap
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 100%
+      height: 100%
+      position: relative
+      .ele-logo-img
+        display: block
+        color: rgb(var(--color-primary))
+  .header-right
+    .header-right-top
+      display: grid
+      grid-template-columns: auto auto auto 1fr
+      align-items: center
+      gap: 22px
+      padding: 18px 0 6px
+      .est-timing
+        white-space: nowrap
+        color: rgb(var(--color-secondary-text))
+      .ele-custom-link-wrap ul
+        display: flex
+        .ele-custom-link
+          position: relative
+          + .ele-custom-link::after
+            content: ''
+            display: block
+            width: 1px
+            height: 90%
+            background-color: rgb(var(--color-secondary-text))
+            position: absolute
+            top: 55%
+            left: 0
+            transform: translateY(-50%)
+          a
+            white-space: nowrap
+            color: rgb(var(--color-secondary-text))
+            padding: 0 6px
+            &:hover
+              color: rgb(var(--color-primary))
+
+// meminfo
+.member-wrap
+  display: flex
+  justify-content: flex-end
+.meminfo-wrap
+  display: flex
+  flex-direction: column
+  gap: 6px
+  .ele-meminfo-wrap
+    display: flex
+    justify-content: flex-end
+    gap: 20px
+    strong
+      font-weight: normal
+  .ele-meminfo-unit
+    display: flex
+    align-items: center
+    gap: 8px
+    position: relative
+  .ele-accinfo
+    .fa-icon
+      height: 15px
+      color: rgb(var(--color-primary))
+      position: relative
+      top: 1px
+  .ele-meminfo-link-wrap ul
+    display: flex
+    .ele-meminfo-link
+      position: relative
+      + .ele-meminfo-link::after
+        content: ''
+        display: block
+        width: 1px
+        height: 80%
+        background-color: rgb(var(--color-primary-text))
+        position: absolute
+        top: 55%
+        left: 0
+        transform: translateY(-50%)
+      a
+        cursor: pointer
+        white-space: nowrap
+        color: rgb(var(--color-primary-text))
+        background-color: transparent
+        border: 0
+        padding: 0 12px
+        &:hover
+          color: rgb(var(--color-primary))
+  .ele-logout-btn
+    cursor: pointer
+    white-space: nowrap
+    color: rgb(var(--color-primary-text))
+    background-color: transparent
+    border: 0
+    padding-left: 12px
+    &:hover
+      color: rgb(var(--color-primary))
+
+.ele-balance-wrap
+  width: 16.875rem
+  font-size: 12px
+  color: var(--color-balance-text)
+  background-color: var(--color-balance-bg)
+  border: var(--border-width) solid var(--border-color)
+  position: absolute
+  top: 90%
+  right: 0
+  z-index: 2099
+  .ele-balance-item
+    line-height: 1.6
+    padding: 1rem
+  .ele-balance
+    white-space: nowrap
+  .ele-balance-tool
+    display: flex
+    justify-content: flex-end
+    background-color: var(--color-balance-tool-bg)
+    border-top: var(--border-width) solid var(--border-color)
+    padding: .25rem
+    .ele-balance-btn
+      cursor: pointer
+      text-decoration: none
+      line-height: 1.875rem
+      color: var(--color-balance-bg-text)
+      background-color: var(--color-balance-btn-bg)
+      border-radius: var(--border-radius-balance-btn)
+      padding: 0 .5rem
+      transition: background-color .2s linear
+      &:hover
+        background-color: var(--color-balance-btn-bg-hover)
+
+// footer
+.page-footer
+  background-color: rgb(var(--color-secondary-bg) / 30%)
+
+.footer-wrap
+  width: var(--min-width)
+  padding: 30px 0 40px
+  margin: 0 auto
+  .footer-top-wrap
+    display: flex
+    justify-content: space-between
+    border-bottom: 1px solid #707070
+    padding-bottom: 18px
+    .top-logo-wrap,
+    .top-pay-wrap
+      display: flex
+      gap: 18px
+      .title
+        white-space: nowrap
+        font-size: 18px
+        padding-right: 10px
+  .footer-middle-wrap
+    display: flex
+    padding: 18px 0 53px
+    gap: 48px
+    .title
+      white-space: nowrap
+      font-size: 18px
+      position: relative
+      top: 6px
+    .middle-text
+      line-height: 1.5
+      color: rgb(var(--color-secondary-text))
+  .footer-bottom-wrap
+    display: flex
+    justify-content: space-between
+    .copyright
+      color: rgb(var(--color-primary-text))
+    .bottom-link-wrap ul
+      display: flex
+      li
+        position: relative
+        + li::after
+          content: ''
+          display: block
+          width: 1px
+          height: 90%
+          background-color: rgb(var(--color-primary-text))
+          position: absolute
+          top: 55%
+          left: 0
+          transform: translateY(-50%)
+        a
+          white-space: nowrap
+          color: rgb(var(--color-primary-text))
+          padding: 0 10px
+          &:hover
+            color: rgb(var(--color-primary))
+
+
+
+// mainnav
+.mainnav-wrap
+  .ele-navbar
+    display: flex
+    align-items: center
+    ul
+      display: flex
+    .ele-navbar-link-wrap
+      .ele-navbar-link
+        cursor: pointer
+        display: block
+        white-space: nowrap
+        text-align: center
+        min-width: 80px
+        font-size: 18px
+        color: rgb(var(--color-primary-text))
+        border-bottom: 3px solid transparent
+        padding: 16px 20px
+        &:hover
+          color: rgb(var(--color-primary))
+        &.active
+          color: rgb(var(--color-primary))
+          border-bottom-color: rgb(var(--color-primary))
+  .ele-morenav
+    cursor: pointer
+    width: 15px
+    height: 18px
+    color: rgb(var(--color-primary))
+    padding: 0 20px
+    position: relative
+    .ele-morenav-container
+      display: flex
+      flex-direction: column
+      background-color: rgb(18 18 18 / 90%)
+      position: absolute
+      right: 0
+      z-index: 9
+    .ele-morenav-sublink-title
+      white-space: nowrap
+      color: rgb(var(--color-primary))
+    .ele-morenav-sublink
+      white-space: nowrap
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 130px
+      height: 38px
+      font-size: 13px
+      color: #fff
+      &:hover
+        color: rgb(var(--color-primary))
+
+.ele-subnav
+  width: 100%
+  min-width: 1000px
+  background-color: rgb(18 18 18 / 90%)
+  box-shadow: 2px 3px 3px rgb(16 16 16 / 30%)
+  padding: 30px 0
+  position: absolute
+  left: 0
+  z-index: 109
+  .ele-subnav-container
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    gap: 26px
+    width: var(--min-width)
+    padding: 0 2rem
+    margin: 0 auto
+  .ele-subnav-container > ul
+    display: grid
+    grid-template-columns: repeat(8, 1fr)
+    gap: 16px 0
+    width: 100%
+  .ele-navbar-sublink
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 8px
+    font-size: 14px
+    .ele-subnab-icon
+      width: 120px
+      height: 40px
+    .ele-subnab-title
+      color: #fff
+    &:hover
+      .ele-subnab-title
+        color: rgb(var(--color-primary))
+
+
+// lang
+$langs: ('zh-tw', 'zh-cn', 'en')
+.lang-wrap
+  .ele-lang-wrap
+    display: flex
+    gap: 8px
+    position: relative
+    top: 2px
+    .ele-lang-option
+      width: 22px
+      height: 22px
+      background-image: url('#{variables.$imageBasePath}/image/not-use/lang_circle_a.png')
+      cursor: pointer
+      @for $i from 1 through list.length($langs)
+        $lang: list.nth($langs, $i)
+        $position: -40px * ($i - 1)
+        &[data-title="#{$lang}"]
+          background-position: 0 #{$position}
+
+// form
+.login-wrap
+  form
+    display: flex
+    align-items: center
+  .login-left
+    display: flex
+    gap: 10px
+  .ele-login-unit
+    display: flex
+    align-items: center
+    width: 180px
+    height: 35px
+    font-size: 13px
+    border-radius: 5px
+    background-color: rgb(var(--color-tertiary-bg) / 30%)
+    border: 1px solid transparent
+    padding-left: 10px
+    position: relative
+    .ele-login-placeholder
+      font-size: 13px
+      color: rgb(var(--color-secondary-text))
+      position: absolute
+      top: 50%
+      left: 12px
+      transform: translateY(-50%)
+      z-index: 3
+      pointer-events: none
+      transition: opacity 0.3s ease, visibility 0.3s ease
+      opacity: 1
+      visibility: visible
+    .ele-login-input
+      width: 100%
+      height: 100%
+      color: rgb(var(--color-secondary-text))
+      border: 0
+      background-color: transparent
+      position: relative
+      z-index: 1
+    .ele-acc-unicod
+      color: rgb(var(--color-secondary-text))
+      margin-right: 10px
+    .ele-forget-pw
+      margin: 0 10px
+      svg
+        width: 20px
+        height: 20px
+        color: rgb(var(--color-primary))
+    .ele-show-password
+      svg
+        width: 18px
+        height: 18px
+        color: rgb(var(--color-secondary-text))
+  .ele-login-submit,
+  .ele-join-btn
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 80px
+    color: rgb(var(--color-primary-text))
+    background: rgb(var(--color-primary))
+    border-radius: 30px
+    border: 0
+    cursor: pointer
+    transition: .3s background-color
+    @include btn-hover
+  .ele-join-btn
+    background-color: rgb(var(--color-secondary))
+
+.news-wrap
+  display: flex
+  align-items: center
+  gap: 10px
+  .news-title
+    font-size: 18px
+    font-weight: bold
+    color: rgb(var(--color-primary))
+  .news-item
+    a
+      color: rgb(var(--color-secondary-text))
+      &:hover
+        color: rgb(var(--color-primary))
+    .vfm-marquee-container
+      overflow: hidden
+      .vfm-parent
+        gap: 2rem
+
+
+// first
+.first-section-wrap
+  .section-wrap
+    width: var(--min-width)
+    margin: 0 auto
+
+.section1
+  padding: 52px 0 30px
+  .section-wrap
+    display: flex
+    justify-content: space-between
+
+.section2
+  background-color: rgb(var(--color-secondary-bg) / 20%)
+  padding: 38px 0 42px
+
+.section3
+  padding: 33px 0 51px
+
+.section4
+  background-color: rgb(var(--color-secondary-bg) / 20%)
+  padding: 45px 0 35px
+
+
+.first-top-wrap
+  width: calc(100% - 363px)
+  .first-slider-wrap
+    display: flex
+    align-items: center
+    gap: 26px
+    padding-bottom: 24px
+    .slider-wrap
+      width: 550px
+      height: 300px
+      overflow: hidden
+      position: relative
+      .swiper
+        border-radius: 20px
+  .first-promotion-warp
+    .first-promotion-promotion
+      display: block
+      + .first-promotion-promotion
+        margin-top: 26px
+
+.first-hotgame-warp
+  width: 363px
+  .hotgame-title
+    font-size: 21px
+    color: rgb(var(--color-primary-text))
+    padding-bottom: 22px
+    > span
+      font-size: 16px
+      color: rgb(var(--color-secondary-text))
+      padding-left: 6px
+  .hotgame-warp
+    height: 300px
+    > .swiper
+      height: 100%
+      --swiper-pagination-bottom: 4px
+  .hotgame-item-warp
+    display: flex
+    flex-direction: column
+    gap: 4px
+  .hotgame-item
+    display: grid
+    grid-template-columns: 52px 52px 1fr auto
+    align-items: center
+    height: 48px
+    font-size: 13px
+    background-color: rgb(var(--color-secondary-bg) / 20%)
+    border-radius: 10px
+    padding-right: 10px
+    .hotgame-rank
+      text-align: center
+      color: #FEBA0D
+    .hotgame-name
+      .hotgame-name-top
+        color: rgb(var(--color-primary-text))
+        padding-bottom: 2px
+      .hotgame-name-bottom
+        color: rgb(var(--color-secondary-text))
+    .hotgame-number
+      display: flex
+      align-items: center
+      color: rgb(var(--color-primary-text))
+      svg
+        margin-right: 6px
+  // .hotgame-control
+  //   display: flex
+  //   justify-content: center
+  //   gap: 6px
+  //   position: absolute
+  //   left: 50%
+  //   bottom: 0
+  //   transform: translateX(-50%)
+  //   .control-btn
+  //     display: block
+  //     width: 8px
+  //     height: 8px
+  //     background-color: var(--swiper-pagination-bullet-inactive-color)
+  //     border-radius: 50%
+  //     &.active
+  //       background-color: rgb(var(--color-primary))
+
+.first-casino-wrap
+  .casino-tab-wrap
+    display: flex
+    justify-content: flex-end
+    gap: 18px
+    margin-bottom: 25px
+    .tab
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 120px
+      height: 40px
+      color: rgb(var(--color-primary-text))
+      background-color: rgb(var(--color-tertiary-bg) / 30%)
+      border: 1px solid rgb(var(--color-tertiary-bg) / 0)
+      border-radius: 40px
+      cursor: pointer
+      @include btn-hover
+      &.active
+        color: rgb(var(--color-primary))
+        background-color: rgb(var(--color-tertiary-bg) / 0)
+        border-color: rgb(var(--color-primary))
+  .casino-wrap
+    display: flex
+    justify-content: space-between
+    .casino-item
+      position: relative
+      &:hover
+        .item-img
+          &::after
+            opacity: 1
+          .item-btn
+            bottom: 50%
+            opacity: 1
+    .item-img
+      width: 146px
+      height: 136px
+      position: relative
+      border-radius: 10px
+      overflow: hidden
+      > img
+        width: 100%
+        height: 100%
+        object-fit: cover
+      &::after
+        content: ''
+        display: block
+        width: 100%
+        height: 100%
+        background-color: rgb(0 0 0 / 50%)
+        position: absolute
+        top: 0
+        left: 0
+        opacity: 0
+        transition: .3s opacity
+      .item-btn
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100px
+        height: 35px
+        color: #fff
+        background-color: rgb(var(--color-primary))
+        border: 0
+        border-radius: 35px
+        position: absolute
+        bottom: 45%
+        left: 50%
+        transform: translate3d(-50%, 50%, 0)
+        z-index: 2
+        opacity: 0
+        transition: .5s transform, .4s bottom
+    .item-name
+      display: flex
+      justify-content: space-between
+      color: rgb(var(--color-primary-text))
+      padding-top: 14px
+      .hot
+        content: 'HOT'
+        font-size: 13px
+        color: #fff
+        background-color: #D21927
+        border-radius: 3px
+        padding: 1px 6px
+    .item-platform
+      font-size: 13px
+      color: rgb(var(--color-secondary-text))
+      padding-top: 4px
+
+.first-live-wrap
+  .live-wrap
+    display: flex
+    align-items: flex-end
+    justify-content: center
+    gap: 16px
+    .live-item
+      display: block
+      width: 180px
+      height: 270px
+      background: rgb(var(--color-secondary))
+      background-position: center bottom
+      background-repeat: no-repeat
+      border-radius: 20px
+      position: relative
+      &::after
+        content: ''
+        display: block
+        width: 100%
+        height: 100%
+        background-color: rgb(0 0 0 / 50%)
+        border-radius: 20px
+        position: absolute
+        top: 0
+        left: 0
+        opacity: 0
+        transition: .3s opacity
+      &:hover
+        .item-btn
+          bottom: 20%
+          opacity: 1
+        &::after
+          opacity: 1
+      .item-text
+        text-align: center
+        position: absolute
+        top: 18px
+        left: 50%
+        transform: translateX(-50%)
+        .title
+          white-space: nowrap
+          font-weight: bold
+          font-size: 24px
+          letter-spacing: 1px
+          color: rgb(var(--color-primary-text))
+          &::after
+            content: ''
+            display: block
+            width: 40px
+            height: 2px
+            background-color: var(--color-first-live-line)
+            margin: 8px auto 0
+        .description
+          white-space: nowrap
+          line-height: 1.5
+          font-size: 13px
+          color: rgb(var(--color-primary-text))
+          padding-top: 12px
+      .item-btn
+        cursor: pointer
+        display: flex
+        justify-content: center
+        align-items: center
+        width: 100px
+        height: 35px
+        color: #fff
+        background-color: rgb(var(--color-primary))
+        border: 0
+        border-radius: 35px
+        position: absolute
+        bottom: 15%
+        left: 50%
+        transform: translate3d(-50%, 0, 0)
+        z-index: 2
+        opacity: 0
+        transition: .5s transform, .4s bottom
+      &:first-child
+        display: flex
+        align-items: flex-end
+        width: 580px
+        height: 332px
+        background-color: transparent
+        .live-item-top
+          position: absolute
+          top: 0
+          left: 0
+          z-index: 2
+        > svg
+          color: rgb(var(--color-secondary))
+          position: relative
+          z-index: 1
+        &:hover
+          &::after
+            display: none
+          .item-btn
+            bottom: 12%
+        .item-btn
+          width: 120px
+          height: 40px
+          background-color: rgb(var(--color-primary))
+          left: 72%
+          bottom: 10%
+          z-index: 3
+          opacity: 1
+        .item-text
+          width: 286px
+          top: 115px
+          left: 72%
+          z-index: 3
+          .description
+            white-space: inherit
+            text-align: left
+          .text-red
+            color: rgb(var(--color-primary))
+            padding-top: 20px
+
+
+.first-mob-wrap
+  display: flex
+  align-items: center
+  justify-content: space-around
+  .mob-left-wrap
+    max-width: 600px
+    .title
+      text-align: center
+      font-size: 32px
+      color: rgb(var(--color-primary))
+    .description
+      font-size: 16px
+      line-height: 1.8
+      color: rgb(var(--color-primary-text))
+      padding: 27px 0 40px
+    .download
+      display: flex
+      justify-content: center
+      gap: 94px
+      .download-qrcode
+        width: 136px
+        height: 136px
+        text-align: center
+        background-color: rgb(var(--color-secondary-bg) / 30%)
+        padding: 7px
+        img
+          width: 100%
+          height: 100%
+        p
+          line-height: 1.5
+          padding-top: 22px
+      .download-h5
+        text-align: center
+        svg
+          color: rgb(var(--color-primary))
+        p
+          line-height: 1.5
+          padding-top: 29px

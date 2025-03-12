@@ -1,0 +1,67 @@
+$imageBasePath: ''
+
+:root
+  // 版面寬度
+  --width: 1336px
+  --page-width: 1200px
+  --min-width: calc( var(--width) + 2rem )
+  --min-page-width: calc( var(--page-width) + 2rem )
+  // 餘額顯示
+  --color-balance-text: rgb(var(--color-primary-text))
+  --color-balance-bg: rgb(var(--color-primary-bg))
+  --color-balance-tool-bg: rgb(var(--color-secondary-text))
+  --color-balance-btn-text: rgb(var(--color-primary-text))
+  --color-balance-btn-bg: rgb(var(--color-primary))
+  --color-balance-btn-bg-hover: rgb(var(--color-primary)/ 90%)
+  --border-radius-balance-btn: 5px
+  --border-width: 0
+  --border-color: transparent
+  // 輪播
+  --swiper-pagination-bottom: 14px
+  --swiper-pagination-bullet-horizontal-gap: 3px
+  --swiper-pagination-color: rgb(var(--color-primary))
+  --swiper-pagination-bullet-inactive-color: #212224
+  --swiper-pagination-bullet-inactive-opacity: 1
+  // 其他顏色定義
+  --color-first-live-line: #FF0011
+
+:root
+  // --color-primary-bg #000000
+  --color-primary-bg: 0 0 0
+  // --color-secondary-bg #f8f8f8
+  --color-secondary-bg: 248 248 248
+  // --color-tertiary-bg #020202
+  --color-tertiary-bg: 2 2 2
+  // --color-primary #0E74FF
+  --color-primary: 14 116 255
+  // --color-secondary #50B8F8
+  --color-secondary: 80 184 248
+  // --color-primary-text #FFFFFF
+  --color-primary-text: 255 255 255
+  // --color-secondary-text #a7a7a7
+  --color-secondary-text: 167 167 167
+  --page-bg: none
+
+:root[data-theme*="color2"]
+  --color-primary-bg: 54 37 175
+  --color-primary: 244 122 234
+  --color-secondary: 132 71 200
+  --color-primary-text: 255 255 255
+  --color-secondary-text: 219 219 219
+  --page-bg: linear-gradient(180deg, rgb(var(--color-secondary)), transparent)
+
+:root[data-theme*="color3"]
+  --color-primary-bg: 14 206 255
+  --color-primary: 255 168 29
+  --color-secondary: 36 249 228
+  --color-primary-text: 0 0 0
+  --color-secondary-text: 54 54 54
+  --page-bg: linear-gradient(180deg, rgb(var(--color-secondary) / 80%), transparent)
+
+:root[data-theme*="color4"]
+  --color-primary-bg: 230 230 230
+  --color-primary: 226 87 87
+  --color-secondary: 255 217 220
+  --color-primary-text: 0 0 0
+  --color-secondary-text: 72 72 72
+  --page-bg: none

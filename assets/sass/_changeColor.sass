@@ -1,0 +1,533 @@
+:root
+  --cp-color-default: #91a2c8
+  --cp-color-primary: #516eb0
+  --cp-body-bg: #e9edf6
+  --cp-header-text: #758c9f
+  --cp-header-bg: #fff
+  --cp-header-shadow: rgb(108 108 108 / 6%)
+  --cp-input-text: #2b3746
+  --cp-input-bg: #f1f4f8
+  --cp-button-bg: var(--cp-color-default)
+  --cp-button-bg-hover: #798ab1
+  --cp-reset-bg-hover: #d6e1ea
+
+// transform
+.fadeIn-enter-active,
+.fadeIn-leave-active
+  transition: opacity 0.4s ease
+
+.fadeIn-enter-from,
+.fadeIn-leave-to
+  opacity: 0.1
+
+.page-wrap::-webkit-scrollbar
+  width: 10px
+
+.page-wrap::-webkit-scrollbar-track
+  background: #ffffff
+
+.page-wrap::-webkit-scrollbar-thumb
+  background-color: #d8dde4
+  border-radius: 10px
+  border: 2px solid #ffffff
+  &:hover
+    background-color: var(--cp-color-primary)
+
+
+.ck-cp-container
+  position: absolute
+  top: 100%
+  left: 0
+  z-index: 9999 !important
+
+.changeColor-edit-content
+  display: flex
+  align-items: center
+  gap: 6px
+.changeColor-edit-btn,
+.changeColor-close-btn,
+.changeColor-question-btn,
+.changeColor-importColor-btn,
+.changeColor-importColor-label,
+.changeColor-submit
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 4px
+  width: 100%
+  height: 40px
+  font-size: 15px
+  color: #fff
+  background-color: var(--cp-color-default)
+  border-radius: 30px
+  padding: 8px
+  &:has(svg)
+    padding-right: 16px
+  &:hover
+    background-color: var(--cp-color-primary)
+  .fa-icon-edit,
+  .fa-icon-question
+    display: block
+    width: 18px
+    color: #f5f5f5
+.changeColor-edit-btn
+  background: linear-gradient(180deg, #40e6ff, #2d96ff)
+  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 20%)
+  &:hover
+    box-shadow: 0 0 4px 2px rgb(0 0 0 / 20%)
+
+.changeColor-wrap
+  display: flex
+  flex-direction: column
+  gap: 8px
+  width: 310px
+  height: 100%
+  font-size: 14px
+  color: #000
+  background-color: #e9edf6
+  padding: 6px 0 1.5rem
+  position: fixed
+  right: 0
+  transform: translateX(100%)
+  transition: .3s transform
+  box-shadow: 0 0 10px 6px rgb(35 39 42 / 8%)
+  .changeColor-area-wrap
+    padding: 0 6px
+    .changeColor-area-content
+      background-color: #fff
+      border-radius: 10px
+      padding: 1rem
+  .changeColor-edit-wrap
+    padding: 6px
+  .changeColor-size-wrap
+    .changeColor-area-content
+      padding: 1rem 10px
+
+// ! 選色
+.currentColor-item-wrap
+  position: relative
+  z-index: 99
+  .currentColor-item
+    display: flex
+    flex-direction: column
+    &:has(+ .currentColor-item)
+      margin-bottom: 10px
+  .currentColor-title
+    display: flex
+    gap: 4px
+    font-size: 12px
+    color: #787c87
+    padding-bottom: 4px
+    .tips
+      .tips-img
+        width: 360px
+        background-color: #fff
+        border-radius: 10px
+        box-shadow: 0 0 10px 6px rgb(35 39 42 / 8%)
+        padding: 6px
+        position: absolute
+        top: 50%
+        right: 100%
+        z-index: 9999
+        transform: translateY(-50%)
+        span
+          display: flex
+          align-items: center
+          justify-content: center
+          gap: 4px
+          color: #bd0707
+          font-size: 14px
+          padding: 2px 0 8px
+        img
+          width: 100%
+  .currentColor-item-pick
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: var(--cp-input-bg)
+    padding: 6px
+    border-radius: 30px
+    position: relative
+    .currentColor-item-color
+      cursor: pointer
+      display: inline-block
+      flex: 0 0 24px
+      width: 24px
+      height: 24px
+      border-radius: 24px
+      cursor: pointer
+      margin-left: 4px
+      input[type="color"]
+        width: 0
+        height: 0
+        opacity: 0
+    .currentColor-item-input
+      text-transform: lowercase
+      width: 100%
+      height: 30px
+      color: var(--cp-input-text)
+      font-size: 13px
+      font-family: monospace
+      background-color: transparent
+      border: 0
+      padding: 0 10px
+
+// 重置選色
+.changeColor-reset-btn
+  width: 60px
+  height: 30px
+  font-size: 13px
+  color: var(--cp-input-text)
+  background-color: var(--cp-input-bg)
+  border-radius: 4px
+  &:disabled
+    pointer-events: none
+    opacity: 0.3
+.changeColor-resetSingleColor-type
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 40px
+  height: 100%
+  background-color: transparent
+  border: 0
+  cursor: pointer
+  svg
+    width: 18px
+    height: 18px
+    color: var(--cp-header-text)
+  &:hover svg
+    color: var(--cp-input-text)
+.changeColor-resetSingleColor-type:disabled
+  pointer-events: none
+  opacity: 0
+
+// 匯出匯入按鈕
+.changeColor-tools-btn-wrap
+  display: flex
+  gap: 4px
+  margin-top: 1rem
+  .changeColor-importColor-btn,
+  .changeColor-importColor-label
+    font-size: 13px
+    color: var(--cp-input-text)
+    background-color: var(--cp-input-bg)
+    &:hover
+      background-color: #e7ebf0
+  .changeColor-importColor-label
+    position: relative
+    .changeColor-importColor-input
+      overflow: hidden
+      cursor: pointer
+      width: 100%
+      height: 100%
+      border-radius: 30px
+      opacity: 0
+      position: absolute
+      top: 0
+      left: 0
+
+// 保存示意圖&保存封包
+.changeColor-submit-btn-wrap
+  display: flex
+  gap: 4px
+  margin-top: 10px
+
+
+
+.changeColor-platform-wrap
+  .changeColor-platform-title
+    color: #787c87
+    font-size: 12px
+    padding-bottom: 4px
+  .changeColor-platform-content
+    display: flex
+    gap: 1rem
+    line-height: 1.6
+    label
+      cursor: pointer
+      display: flex
+      align-items: center
+      gap: 6px
+      position: relative
+      input[type="radio"]
+        display: none
+      &::before
+        content: ''
+        transition: .3s
+        display: block
+        width: 12px
+        height: 12px
+        background-color: #d8dde4
+        border: 1px solid var(--cp-input-bg)
+        outline: 1px solid var(--cp-input-bg)
+        border-radius: 50%
+        position: relative
+        top: 1px
+      &:has(input[type="radio"]:checked)
+        &::before
+          background-color: var(--cp-color-primary)
+          outline-color: var(--cp-color-primary)
+      &:has(input[type="radio"]:disabled)
+        cursor: no-drop
+        opacity: 0.3
+
+.changeColor-size-wrap
+  .changeColor-size-title
+    color: #787c87
+    font-size: 12px
+    padding-bottom: 4px
+  .changeColor-size-info
+    display: flex
+    gap: 2px
+    line-height: 1.6
+    li
+      white-space: nowrap
+      flex: 1
+      display: block
+      text-align: center
+      cursor: pointer
+      background-color: var(--cp-input-bg)
+      border-radius: 30px
+      padding: 2px 8px
+      position: relative
+      .changeColor-size-tips
+        cursor: auto
+        opacity: 0
+        transform: translateY(10px)
+        transition: opacity .3s, transform .3s
+        color: #fff
+        background-color: #222
+        padding: 4px 8px
+        border-radius: 4px
+        font-size: 12px
+        position: relative
+        margin-top: 8px
+        position: absolute
+        z-index: 9
+        &::after
+          content: ''
+          border-style: solid
+          border-width: 0 6px 6px 6px
+          border-color: transparent transparent #222 transparent
+          position: absolute
+          top: -6px
+          left: 20px
+        .logo-img
+          width: 120px
+      .changeColor-update-logo
+        display: flex
+        flex-direction: column
+      &:hover
+        color: #fff
+        background-color: var(--cp-color-primary)
+        .changeColor-size-tips
+          opacity: 1
+          transform: translateY(0)
+    label
+      &::after
+        content: ' - '
+    input[type='file']
+      cursor: pointer
+      width: 100%
+      opacity: 0
+      position: absolute
+      left: 0
+      top: 0
+
+.changeColor-theme-wrap
+  display: flex
+  align-items: center
+  gap: 10px
+  margin-bottom: 1rem
+  .changeColor-theme-title
+    font-size: 12px
+    color: #787c87
+    white-space: nowrap
+    margin-bottom: 4px
+  .changeColor-theme-content
+    display: flex
+    justify-content: space-between
+    gap: 10px
+.changeColor-theme-color
+  display: flex
+  align-items: center
+  gap: 6px
+  .changeColor-theme-btn
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    flex: 0 0 30px
+    width: 30px
+    height: 30px
+    border: 1px solid rgb(230 231 235 / 12%)
+    border-radius: 50%
+    > span
+      display: block
+      width: 22px
+      height: 22px
+      border-radius: 50%
+      background: linear-gradient(90deg, var(--themeColorStyle1) 0, var(--themeColorStyle1) 50%, var(--themeColorStyle2) 50%, var(--themeColorStyle2) 100%)
+    &.active
+      border-color: var(--cp-color-primary)
+
+.page-layout,
+.page-wrap
+  width: 100%
+  height: 100%
+  transition: .3s
+
+.changeColor-block
+  width: 100%
+  position: fixed
+  left: 0
+  top: 0
+  z-index: 100
+  .changeColor-edit
+    position: fixed
+    top: 1rem
+    right: 1rem
+    .changeColor-edit-btn
+      width: 120px
+
+.isEdit
+  overflow: hidden
+  background-color: var(--cp-body-bg)
+  #__nuxt
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+  .changeColor-wrap
+    transform: translateX(0)
+  .page-wrap
+    width: calc( 100% - 310px )
+    overflow-x: auto
+    box-shadow: 0 0 10px 5px var(--cp-header-shadow)
+
+
+.changeColor-tips
+  letter-spacing: 1px
+  font-size: 14px
+  color: #fff
+  background-color: rgb(13 119 255 / 80%)
+  border-radius: 4px
+  padding: 20px 30px
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate3d(-50%, -50%, 0)
+  &.error
+    background-color: rgb(255 13 13 / 80%)
+
+.instructions-wrap
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
+  background-color: rgb(0 0 0 / 50%)
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 102
+  .instructions-container
+    width: 800px
+    height: 80vh
+    position: relative
+  .instructions-img
+    width: 100%
+    height: 100%
+    overflow: auto
+    img
+      width: 100%
+  .instructions-close-btn
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 40px
+    height: 40px
+    cursor: pointer
+    background-color: var(--cp-color-primary)
+    position: absolute
+    right: 22px
+    top: 18px
+    svg
+      color: #fff
+      width: 30px
+      height: 30px
+    &:hover svg
+      color: #f3cc25
+
+
+.ck-cp-container *
+  box-sizing: content-box
+
+.ck-cp-local-color-conatiner .ck-cp-color-item
+  border-color: var(--cp-gray-300) !important
+
+.ck-cp-color-list-label
+  justify-content: flex-start !important
+  &:first-child
+    font-size: 0
+    &::before
+      content: '储存喜好颜色'
+      display: inline-block
+      font-size: 13px
+
+
+.highlight
+  pointer-events: none
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
+  font-size: 5rem
+  color: #fff
+  font-weight: bold
+  text-shadow: 0 0 10px rgb(0 0 0 / 70%)
+  background-color: rgb(85 217 127 / 60%)
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 99
+.ele-logo-wrap
+  .highlight
+    font-size: 2.6rem
+
+.floating-icon,
+.go-tips, .go-tg, .go-contact, .go-top
+  display: none !important
+
+
+.logo-update-btn,
+.logo-remove-btn
+  transition: opacity .3s ease
+  opacity: 0
+  color: #000
+  background-color: #fff
+  box-shadow: 0px 0px 4px 3px rgb(81 110 176 / 50%)
+  padding: 6px 12px
+  border-radius: 30px
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  cursor: pointer
+  &:hover
+    opacity: 1
+
+.logo-update-btn
+  overflow: hidden
+  input[type="file"]
+    cursor: pointer
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    opacity: 0

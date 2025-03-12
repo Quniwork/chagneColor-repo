@@ -1,0 +1,136 @@
+{
+  "colorVariables": [1, 2, 4, 7, 8],
+  "colorThemes": [
+    {
+      "themeName": "color1",
+      "themeColor": ["#212224, #0E77FF"],
+      "themeMode": "dark",
+      "footerLogo": ["white, white"],
+      "value": []
+    },
+    {
+      "themeName": "color2",
+      "themeColor": ["#3625af, #f47aea"],
+      "themeMode": "dark",
+      "footerLogo": ["white, white"],
+      "value": []
+    },
+    {
+      "themeName": "color3",
+      "themeColor": ["#0ECEFF, #FFA81D"],
+      "themeMode": "light",
+      "footerLogo": ["white, white"],
+      "value": []
+    },
+    {
+      "themeName": "color4",
+      "themeColor": ["#e6e6e6, #e25757"],
+      "themeMode": "light",
+      "footerLogo": ["red, black"],
+      "value": []
+    }
+  ],
+  "customLinks": [
+    { "title": "网站首页", "link": "#" },
+    { "title": "官方导航", "link": "#" },
+    { "title": "快速充值", "link": "#" }
+  ],
+  "meminfoLinks": {
+    "first": [
+      { "title": "会员中心", "link": "#" },
+      { "title": "线上存款", "link": "#" },
+      { "title": "线上取款", "link": "#" },
+      { "title": "一键归户", "link": "#" },
+      { "title": "未读讯息(1)", "link": "#" }
+    ],
+    "ball": [
+      { "title": "下注记录", "link": "#" },
+      { "title": "会员中心", "link": "#" },
+      { "title": "线上存款", "link": "#" },
+      { "title": "线上取款", "link": "#" },
+      { "title": "一键归户", "link": "#" }
+    ],
+    "else": [
+      { "title": "会员中心", "link": "#" },
+      { "title": "线上存款", "link": "#" },
+      { "title": "线上取款", "link": "#" },
+      { "title": "一键归户", "link": "#" }
+    ]
+  },
+  "footerLinks": [
+    { "title": "关于我们", "link": "/article" },
+    { "title": "联系我们", "link": "#" },
+    { "title": "代理合作", "link": "#" },
+    { "title": "存款帮助", "link": "#" },
+    { "title": "取款帮助", "link": "#" },
+    { "title": "常见问题", "link": "#" }
+  ],
+  "navItems": [
+    {
+      "title": "首页",
+      "link": "first",
+      "class": "first",
+      "img": "",
+      "subItems": []
+    },
+    {
+      "title": "电子游艺",
+      "link": "game",
+      "class": "game casino",
+      "img": "game",
+      "subItems": []
+    },
+    {
+      "title": "视讯直播",
+      "link": "live",
+      "class": "game live",
+      "img": "live",
+      "subItems": []
+    },
+    {
+      "title": "棋牌游戏",
+      "link": "card",
+      "class": "game card",
+      "img": "card",
+      "subItems": []
+    },
+    {
+      "title": "体育赛事",
+      "link": "ball",
+      "class": "game sport",
+      "img": "sports",
+      "subItems": []
+    },
+    {
+      "title": "彩票游戏",
+      "link": "lottery",
+      "class": "game lottery",
+      "img": "lottery",
+      "subItems": []
+    },
+    {
+      "title": "优惠活动",
+      "link": "promotion",
+      "class": "promotion",
+      "img": "promotion",
+      "subItems": []
+    },
+    {
+      "title": "手机下注",
+      "link": "",
+      "class": "",
+      "img": "",
+      "subItems": []
+    },
+    {
+      "title": "更多",
+      "link": "",
+      "class": "morenav",
+      "img": "",
+      "subItems": [
+        { "title": "在线客服", "link": "#" },
+        { "title": "关于我们", "link": "/article" }
+      ]
+    }
+  ]
+}
